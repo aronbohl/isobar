@@ -1,0 +1,231 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.4261a2d725d11bd5aea3f9733de3e09d644ecf8d.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "id": "urn:oid:2.49.0.1.840.0.4261a2d725d11bd5aea3f9733de3e09d644ecf8d.001.1",
+        "event": "Special Weather Statement",
+        "severity": "Moderate",
+        "urgency": "Expected",
+        "certainty": "Observed",
+        "messageType": "Alert",
+        "status": "Actual",
+        "sent": "2026-10-15T19:59:00-08:00",
+        "effective": "2026-10-15T19:59:00-08:00",
+        "onset": "2026-10-15T19:59:00-08:00",
+        "ends": null,
+        "expires": "2026-10-16T04:00:00-08:00",
+        "senderName": "NWS Juneau AK",
+        "headline": "Special Weather Statement issued October 15 at 7:59PM AKDT by NWS Juneau AK",
+        "description": "Through Friday morning, a series of fronts will bring multiple\nrounds of moderate to heavy rainfall across the Alaska Panhandle.\nThe second round of heavy rain is expected to bring an additional\n0.5 to 1.5 inches tonight into Friday morning, with the higher end\nQPF amounts expected for Baranof and Admiralty Islands. More\nlocalized lower or higher amounts are possible due to terrain\neffects.\n\nEven higher rain amounts are possible for parts of the central\npanhandle associated with the front tonight as its low develops\ninland and moves northward, though there is still a lack of\nconfidence on the exact location of these higher rates. As of now,\nthe highest amounts are expected to move into southern Baranof\nIsland up into Stephens Passage, though some elevated rainfall\namounts may still reach Sitka and other parts of the central and\nnorthern panhandle.\n\nWhile these forecasted rain amounts are expected to bring rises to\nsmall creeks and rivers in the area, there is no flooding\nanticipated at this time.\n\nStay tuned to weather.gov/juneau as we continue to monitor the\nsituation and update our forecast.",
+        "instruction": null,
+        "areaDesc": "Municipality of Skagway; Haines Borough and Klukwan; Glacier Bay; Eastern Chichagof Island; City and Borough of Sitka; Admiralty Island",
+        "references": []
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0ee73c41e85d08b44533fd8031220483b88244c6.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "id": "urn:oid:2.49.0.1.840.0.0ee73c41e85d08b44533fd8031220483b88244c6.001.1",
+        "event": "Wind Advisory",
+        "severity": "Moderate",
+        "urgency": "Expected",
+        "certainty": "Likely",
+        "messageType": "Alert",
+        "status": "Actual",
+        "sent": "2026-10-15T22:53:00-05:00",
+        "effective": "2026-10-15T22:53:00-05:00",
+        "onset": "2026-10-16T04:00:00-05:00",
+        "ends": "2026-10-16T13:00:00-05:00",
+        "expires": "2026-10-16T12:30:00-05:00",
+        "senderName": "NWS Tulsa OK",
+        "headline": "Wind Advisory issued October 15 at 10:53PM CDT until October 16 at 1:00PM CDT by NWS Tulsa OK",
+        "description": "* WHAT...North winds 15 to 20 mph with gusts up to 45 mph expected.\n\n* WHERE...In Arkansas, higher terrain areas of Madison, Northern\nCrawford, and Northern Franklin Counties. In Oklahoma, Choctaw,\nPushmataha, and Southern Le Flore Counties.\n\n* WHEN...From 4 AM to 1 PM CDT Friday.\n\n* IMPACTS...Gusty winds will blow around unsecured objects. Tree\nlimbs could be blown down and a few power outages may result.",
+        "instruction": "Winds this strong can make driving difficult, especially for high\nprofile vehicles. Use extra caution.",
+        "areaDesc": "Madison; Northern Crawford; Northern Franklin; Pushmataha; Choctaw; Southern Le Flore",
+        "references": []
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.526f0be20464a9b87718a4b7ec6453c6f0fdcbdc.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "id": "urn:oid:2.49.0.1.840.0.526f0be20464a9b87718a4b7ec6453c6f0fdcbdc.001.1",
+        "event": "Freeze Watch",
+        "severity": "Severe",
+        "urgency": "Future",
+        "certainty": "Possible",
+        "messageType": "Update",
+        "status": "Actual",
+        "sent": "2026-10-15T22:27:00-05:00",
+        "effective": "2026-10-15T22:27:00-05:00",
+        "onset": "2026-10-17T01:00:00-05:00",
+        "ends": "2026-10-17T10:00:00-05:00",
+        "expires": "2026-10-16T15:00:00-05:00",
+        "senderName": "NWS Lubbock TX",
+        "headline": "Freeze Watch issued October 15 at 10:27PM CDT until October 17 at 10:00AM CDT by NWS Lubbock TX",
+        "description": "* WHAT...Sub-freezing temperatures as low as 28 possible across the\nfar southwestern Texas Panhandle and as low as 32 near the edge of\nthe Caprock.\n\n* WHERE...The South Plains and the southwestern Texas Panhandle.\n\n* WHEN...From late Friday night through Saturday morning.\n\n* IMPACTS...Frost and freeze conditions could kill crops, other\nsensitive vegetation and possibly damage unprotected outdoor\nplumbing.",
+        "instruction": "Take steps now to protect tender plants from the cold.",
+        "areaDesc": "Parmer; Castro; Swisher; Briscoe; Bailey; Lamb; Hale; Floyd; Cochran; Hockley; Lubbock; Crosby; Yoakum; Terry; Lynn",
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.88ede39b7bb051f1d1e9cb2686f2980bf6097672.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.88ede39b7bb051f1d1e9cb2686f2980bf6097672.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-15T12:37:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9690e71b4ee7ff0bef26c1af09795628a8d197db.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.9690e71b4ee7ff0bef26c1af09795628a8d197db.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-15T20:24:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9690e71b4ee7ff0bef26c1af09795628a8d197db.002.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.9690e71b4ee7ff0bef26c1af09795628a8d197db.002.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-15T20:24:00-05:00"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.03e58beb5e172bde4c041511b8bb05713fe3203c.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "id": "urn:oid:2.49.0.1.840.0.03e58beb5e172bde4c041511b8bb05713fe3203c.001.1",
+        "event": "Flood Warning",
+        "severity": "Severe",
+        "urgency": "Immediate",
+        "certainty": "Observed",
+        "messageType": "Update",
+        "status": "Actual",
+        "sent": "2026-10-15T20:59:00-05:00",
+        "effective": "2026-10-15T20:59:00-05:00",
+        "onset": "2026-10-16T04:00:00-05:00",
+        "ends": "2026-10-19T09:40:00-05:00",
+        "expires": "2026-10-16T09:00:00-05:00",
+        "senderName": "NWS Midland/Odessa TX",
+        "headline": "Flood Warning issued October 15 at 8:59PM CDT until October 19 at 9:40AM CDT by NWS Midland/Odessa TX",
+        "description": "...The Flood Warning continues for the following rivers in Texas...\n\nRio Grande at Rio Grande at Rio Grande Village, BBNP, Texas\naffecting Brewster County.\n\nRio Grande at Rio Grande at Johnson Ranch near Castolon, Texas\naffecting Brewster County.\n\n...The Flood Warning is extended for the following rivers in Texas...\n\nRio Grande at Rio Grande near Castolon, Texas affecting Brewster\nCounty.\n\nFor the Rio Grande...including Rio Grande near Castolon,  Texas, Rio\nGrande at Johnson Ranch near Castolon,  Texas, Rio Grande at Rio\nGrande Village,  BBNP,  Texas...Moderate flooding is forecast.\n\n* WHAT...Moderate flooding is forecast.\n\n* WHERE...Rio Grande at Rio Grande at Rio Grande Village, BBNP,\nTexas.\n\n* WHEN...From late tonight to Monday morning.\n\n* IMPACTS...At 12.0 feet, the river reaches bankfull, and no damage\nis expected.  Preparations may be necessary to remove water pumps.\nThe park should be notified at this time if additional rises are\nexpected so they will have time to remove the pumps. At 13.0 feet,\nthe river reaches minor flood stage.  Water reaches the water pumps\nmaintained by the park service that are used to water the\ncampgrounds and to provide water to the employee living quarters.\nIt may be necessary for park personnel to remove the pumps. At 15.0\nfeet, the river reaches moderate flood stage.  Water pumps\nsubmerge. At 19.0 feet, the river reaches the bottom of telemetry\nbox near the pump house. At 20.0 feet, the river reaches major\nflood stage.  Rio Grande Village campground begins to flood.\nEvacuations may be necessary.  The rain gauge near pump house will\nbe affected.\n\n* ADDITIONAL DETAILS...\n- At 8:00 PM CDT Thursday the stage was 1.4 feet (0.4 meters).\n- Bankfull stage is 12.0 feet (3.7 meters).\n- Forecast...The river will rise above flood stage late tonight to\n19.4 feet (5.9 meters) early tomorrow afternoon. It will then\nfall early Saturday morning. It will rise to 14.6 feet (4.5\nmeters) early Saturday afternoon. It will then fall below flood\nstage late Saturday evening.\n- Flood stage is 13.0 feet (4.0 meters).\n- Flood History...This crest compares to a previous crest of 21.0\nfeet (6.4 meters) on 07/03/2025.\n- http://www.weather.gov/safety/flood",
+        "instruction": "Caution is urged when walking near riverbanks.\n\nPlease report observed flooding to local emergency services or law\nenforcement and request they pass this information to the National\nWeather Service when you can do so safely.\n\nAdditional information is available at www.weather.gov.\n\nThe next statement will be issued Friday morning at 900 AM CDT.",
+        "areaDesc": "Brewster, TX",
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1c8df14ec28969001532b9194923e7846ba00a8a.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.1c8df14ec28969001532b9194923e7846ba00a8a.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-15T14:26:00-05:00"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.77e7555cb8af73f08b31db5c30024711820ca1f7.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "id": "urn:oid:2.49.0.1.840.0.77e7555cb8af73f08b31db5c30024711820ca1f7.001.1",
+        "event": "Hydrologic Outlook",
+        "severity": "Unknown",
+        "urgency": "Future",
+        "certainty": "Possible",
+        "messageType": "Alert",
+        "status": "Actual",
+        "sent": "2026-10-16T13:48:00+10:00",
+        "effective": "2026-10-16T13:48:00+10:00",
+        "onset": "2026-10-16T13:48:00+10:00",
+        "ends": null,
+        "expires": "2026-10-16T15:00:00+10:00",
+        "senderName": "NWS Tiyan GU",
+        "headline": "Hydrologic Outlook issued October 16 at 1:48PM ChST by NWS Tiyan GU",
+        "description": "ESFGUM\n\nThis Hydrologic Outlook has been replaced by the Flood Watch, out for\nGuam, Rota, Tinian and Saipan.\n\nResidents on these islands need to closely monitor this developing\nsituation as flood watches, advisories and flash flood warnings could\nbe issued later.\n\nIf living near streams and rivers, prepare to move items away from\nstream and river banks. Make sure storm drains nearby are not\nclogged, especially If living at low-lying areas.",
+        "instruction": null,
+        "areaDesc": "Guam, GU; Rota, MP; Saipan, MP; Tinian, MP",
+        "references": []
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0-KEEPALIVE-19207",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "id": "urn:oid:2.49.0.1.840.0-KEEPALIVE-19207",
+        "event": "Test Message",
+        "severity": "Unknown",
+        "urgency": "Unknown",
+        "certainty": "Unknown",
+        "messageType": "Alert",
+        "status": "Test",
+        "sent": "2026-10-16T03:55:14+00:00",
+        "effective": "2026-10-16T03:55:14+00:00",
+        "onset": null,
+        "ends": null,
+        "expires": "2026-10-16T04:05:14+00:00",
+        "senderName": "NWS",
+        "headline": null,
+        "description": "Monitoring message only. Please disregard.",
+        "instruction": "Monitoring message only. Please disregard.",
+        "areaDesc": "Montgomery",
+        "references": []
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.3505da15ccb2df9026983e9db9a09f5310893b2e.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "id": "urn:oid:2.49.0.1.840.0.3505da15ccb2df9026983e9db9a09f5310893b2e.001.1",
+        "event": "Air Quality Alert",
+        "severity": "Unknown",
+        "urgency": "Unknown",
+        "certainty": "Unknown",
+        "messageType": "Alert",
+        "status": "Actual",
+        "sent": "2026-10-15T09:47:00-07:00",
+        "effective": "2026-10-15T09:47:00-07:00",
+        "onset": "2026-10-15T09:47:00-07:00",
+        "ends": null,
+        "expires": "2026-10-16T21:00:00-07:00",
+        "senderName": "NWS Tucson AZ",
+        "headline": "Air Quality Alert issued October 15 at 9:47AM MST by NWS Tucson AZ",
+        "description": "AQATWC\n\nThe Arizona Department of Environmental Quality (ADEQ) has issued a\nPM-10 High Pollution Advisory for Douglas on Friday.\n\nAn episode of strong and gusty winds is forecast to generate\nwidespread blowing dust that may result in local PM-10 concentrations\nthat pose a health risk. Adverse health effects increase as air\nquality deteriorates.\n\nCoarse particulate matter - also known as PM-10 - is an air\ncontaminant that can aggravate heart and lung disease conditions,\nespecially in older adults, children, and those with asthma. A\ndecrease in physical activity is recommended.\n\nConsolidate your travel, stabilize loose soils, slow down or avoid\ntravel on dirt roads, reduce or eliminate fireplace use, and avoid\nusing gas-powered lawn equipment.\n\nFor details on this High Pollution Advisory,\nvisit the ADEQ internet site at www.azdeq.gov/forecast/douglas or\ncall 602-771-2300.",
+        "instruction": null,
+        "areaDesc": "Cochise, AZ",
+        "references": []
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6a908c03a1a3e12794de6cfa367d851205fa148d.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "id": "urn:oid:2.49.0.1.840.0.6a908c03a1a3e12794de6cfa367d851205fa148d.001.1",
+        "event": "Flash Flood Warning",
+        "severity": "Severe",
+        "urgency": "Immediate",
+        "certainty": "Likely",
+        "messageType": "Alert",
+        "status": "Actual",
+        "sent": "2026-10-15T22:27:00-05:00",
+        "effective": "2026-10-15T22:27:00-05:00",
+        "onset": "2026-10-15T22:27:00-05:00",
+        "ends": "2026-10-16T01:30:00-05:00",
+        "expires": "2026-10-16T01:30:00-05:00",
+        "senderName": "NWS Austin/San Antonio TX",
+        "headline": "Flash Flood Warning issued October 15 at 10:27PM CDT until October 16 at 1:30AM CDT by NWS Austin/San Antonio TX",
+        "description": "FFWEWX\n\nThe National Weather Service in Austin/San Antonio has issued a\n\n* Flash Flood Warning for...\nEast Central Val Verde County in south central Texas...\n\n* Until 130 AM CDT.\n\n* At 1027 PM CDT, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Between 2 and 4 inches of rain\nhave fallen. Additional rainfall amounts of 1 to 3 inches are\npossible in the warned area. Flash flooding is ongoing or expected\nto begin shortly.\n\nHAZARD...Life threatening flash flooding. Thunderstorms producing\nflash flooding.\n\nSOURCE...Radar indicated.\n\nIMPACT...Life threatening flash flooding of creeks and streams,\nurban areas, highways, streets and underpasses.\n\n* Some locations that will experience flash flooding include...\nPafford Crossing and Devils River State Nat Area Big Satan.",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe especially cautious at night when it is harder to recognize the\ndangers of flooding.\n\nBe aware of your surroundings and do not drive on flooded roads.",
+        "areaDesc": "Val Verde, TX",
+        "references": []
+      }
+    }
+  ]
+}

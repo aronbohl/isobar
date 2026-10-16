@@ -1,0 +1,202 @@
+{
+    "@context": [
+        "https://geojson.org/geojson-ld/geojson-context.jsonld",
+        {
+            "@version": "1.1",
+            "wx": "https://api.weather.gov/ontology#",
+            "@vocab": "https://api.weather.gov/ontology#"
+        }
+    ],
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.529916a34bb33af49c51593bd5877caeb40daac4.001.2",
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.529916a34bb33af49c51593bd5877caeb40daac4.001.2",
+                "@type": "wx:Alert",
+                "id": "urn:oid:2.49.0.1.840.0.529916a34bb33af49c51593bd5877caeb40daac4.001.2",
+                "areaDesc": "Monona; Harrison; Shelby; Pottawattamie; Mills; Montgomery; Fremont; Page; Knox; Cedar; Thurston; Antelope; Pierce; Wayne; Boone; Madison; Stanton; Cuming; Burt; Platte; Colfax; Dodge; Washington; Butler; Saunders; Douglas; Sarpy; Seward; Lancaster; Cass; Otoe; Saline; Jefferson; Gage; Johnson; Nemaha; Pawnee; Richardson",
+                "geocode": {
+                    "SAME": [
+                        "019133",
+                        "019085",
+                        "019165",
+                        "019155",
+                        "019129",
+                        "019137",
+                        "019071",
+                        "019145",
+                        "031107",
+                        "031027",
+                        "031173",
+                        "031003",
+                        "031139",
+                        "031179",
+                        "031011",
+                        "031119",
+                        "031167",
+                        "031039",
+                        "031021",
+                        "031141",
+                        "031037",
+                        "031053",
+                        "031177",
+                        "031023",
+                        "031155",
+                        "031055",
+                        "031153",
+                        "031159",
+                        "031109",
+                        "031025",
+                        "031131",
+                        "031151",
+                        "031095",
+                        "031067",
+                        "031097",
+                        "031127",
+                        "031133",
+                        "031147"
+                    ],
+                    "UGC": [
+                        "IAZ043",
+                        "IAZ055",
+                        "IAZ056",
+                        "IAZ069",
+                        "IAZ079",
+                        "IAZ080",
+                        "IAZ090",
+                        "IAZ091",
+                        "NEZ011",
+                        "NEZ012",
+                        "NEZ015",
+                        "NEZ016",
+                        "NEZ017",
+                        "NEZ018",
+                        "NEZ030",
+                        "NEZ031",
+                        "NEZ032",
+                        "NEZ033",
+                        "NEZ034",
+                        "NEZ042",
+                        "NEZ043",
+                        "NEZ044",
+                        "NEZ045",
+                        "NEZ050",
+                        "NEZ051",
+                        "NEZ052",
+                        "NEZ053",
+                        "NEZ065",
+                        "NEZ066",
+                        "NEZ067",
+                        "NEZ068",
+                        "NEZ078",
+                        "NEZ088",
+                        "NEZ089",
+                        "NEZ090",
+                        "NEZ091",
+                        "NEZ092",
+                        "NEZ093"
+                    ]
+                },
+                "affectedZones": [
+                    "https://api.weather.gov/zones/forecast/IAZ043",
+                    "https://api.weather.gov/zones/forecast/IAZ055",
+                    "https://api.weather.gov/zones/forecast/IAZ056",
+                    "https://api.weather.gov/zones/forecast/IAZ069",
+                    "https://api.weather.gov/zones/forecast/IAZ079",
+                    "https://api.weather.gov/zones/forecast/IAZ080",
+                    "https://api.weather.gov/zones/forecast/IAZ090",
+                    "https://api.weather.gov/zones/forecast/IAZ091",
+                    "https://api.weather.gov/zones/forecast/NEZ011",
+                    "https://api.weather.gov/zones/forecast/NEZ012",
+                    "https://api.weather.gov/zones/forecast/NEZ015",
+                    "https://api.weather.gov/zones/forecast/NEZ016",
+                    "https://api.weather.gov/zones/forecast/NEZ017",
+                    "https://api.weather.gov/zones/forecast/NEZ018",
+                    "https://api.weather.gov/zones/forecast/NEZ030",
+                    "https://api.weather.gov/zones/forecast/NEZ031",
+                    "https://api.weather.gov/zones/forecast/NEZ032",
+                    "https://api.weather.gov/zones/forecast/NEZ033",
+                    "https://api.weather.gov/zones/forecast/NEZ034",
+                    "https://api.weather.gov/zones/forecast/NEZ042",
+                    "https://api.weather.gov/zones/forecast/NEZ043",
+                    "https://api.weather.gov/zones/forecast/NEZ044",
+                    "https://api.weather.gov/zones/forecast/NEZ045",
+                    "https://api.weather.gov/zones/forecast/NEZ050",
+                    "https://api.weather.gov/zones/forecast/NEZ051",
+                    "https://api.weather.gov/zones/forecast/NEZ052",
+                    "https://api.weather.gov/zones/forecast/NEZ053",
+                    "https://api.weather.gov/zones/forecast/NEZ065",
+                    "https://api.weather.gov/zones/forecast/NEZ066",
+                    "https://api.weather.gov/zones/forecast/NEZ067",
+                    "https://api.weather.gov/zones/forecast/NEZ068",
+                    "https://api.weather.gov/zones/forecast/NEZ078",
+                    "https://api.weather.gov/zones/forecast/NEZ088",
+                    "https://api.weather.gov/zones/forecast/NEZ089",
+                    "https://api.weather.gov/zones/forecast/NEZ090",
+                    "https://api.weather.gov/zones/forecast/NEZ091",
+                    "https://api.weather.gov/zones/forecast/NEZ092",
+                    "https://api.weather.gov/zones/forecast/NEZ093"
+                ],
+                "references": [],
+                "sent": "2026-10-16T10:01:00-05:00",
+                "effective": "2026-10-16T10:01:00-05:00",
+                "onset": "2026-10-17T01:00:00-05:00",
+                "expires": "2026-10-17T09:00:00-05:00",
+                "ends": "2026-10-17T09:00:00-05:00",
+                "status": "Actual",
+                "messageType": "Alert",
+                "category": "Met",
+                "severity": "Severe",
+                "certainty": "Likely",
+                "urgency": "Expected",
+                "event": "Freeze Warning",
+                "sender": "w-nws.webmaster@noaa.gov",
+                "senderName": "NWS Omaha/Valley NE",
+                "headline": "Freeze Warning issued October 16 at 10:01AM CDT until October 17 at 9:00AM CDT by NWS Omaha/Valley NE",
+                "description": "* WHAT...Sub-freezing temperatures as low as 28 expected.\n\n* WHERE...Portions of southwest and west central Iowa and east\ncentral, northeast, and southeast Nebraska.\n\n* WHEN...From 1 AM to 9 AM CDT Saturday.\n\n* IMPACTS...Frost and freeze conditions could kill crops, other\nsensitive vegetation and possibly damage unprotected outdoor\nplumbing.",
+                "instruction": "Take steps now to protect tender plants from the cold.\n\nTo prevent water pipes from freezing; wrap or drain or allow them to\ndrip slowly.",
+                "response": "Execute",
+                "note": null,
+                "parameters": {
+                    "AWIPSidentifier": [
+                        "NPWOAX"
+                    ],
+                    "WMOidentifier": [
+                        "WWUS73 KOAX 161501"
+                    ],
+                    "NWSheadline": [
+                        "FREEZE WARNING IN EFFECT FROM 1 AM TO 9 AM CDT SATURDAY"
+                    ],
+                    "BLOCKCHANNEL": [
+                        "EAS",
+                        "NWEM",
+                        "CMAS"
+                    ],
+                    "VTEC": [
+                        "/O.NEW.KOAX.FZ.W.0003.261017T0600Z-261017T1400Z/"
+                    ],
+                    "eventEndingTime": [
+                        "2026-10-17T09:00:00-05:00"
+                    ]
+                },
+                "scope": "Public",
+                "code": "IPAWSv1.0",
+                "language": "en-US",
+                "web": "http://www.weather.gov",
+                "eventCode": {
+                    "SAME": [
+                        "NWS"
+                    ],
+                    "NationalWeatherService": [
+                        "FZW"
+                    ]
+                }
+            }
+        }
+    ],
+    "title": "Current watches, warnings, and advisories for 41.2563 N, 95.9404 W",
+    "updated": "2026-10-16T19:51:26+00:00"
+}

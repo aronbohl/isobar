@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "id": "io.github.aronbohl.isobar",
+  "name": "Isobar",
+  "version": "0.2.0",
+  "author": "Aron Bohl",
+  "license": "MIT",
+  "description": "Weather for Omarchy: a bar icon with severity-colored alerts, an extended popover, and a full keyboard-first Weather app.",
+  "kinds": [
+    "service",
+    "bar-widget",
+    "panel"
+  ],
+  "entryPoints": {
+    "service": "Service.qml",
+    "barWidget": "BarWidget.qml",
+    "panel": "Host.qml"
+  },
+  "barWidget": {
+    "displayName": "Isobar",
+    "description": "Sky icon with severity-colored alerts and a forecast popover",
+    "category": "Info",
+    "allowMultiple": false,
+    "defaultSection": "center",
+    "schema": [
+      {
+        "key": "units",
+        "type": "enum",
+        "label": "Units",
+        "options": ["auto", "metric", "imperial"],
+        "defaultValue": "auto",
+        "description": "auto follows your locale. u in the popover or app toggles it."
+      },
+      {
+        "key": "refreshMinutes",
+        "type": "integer",
+        "label": "Refresh interval (minutes)",
+        "min": 10,
+        "max": 120,
+        "step": 5,
+        "defaultValue": 15
+      },
+      {
+        "key": "scrollSpeed",
+        "type": "integer",
+        "label": "Trackpad scroll speed (%)",
+        "min": 50,
+        "max": 800,
+        "step": 25,
+        "defaultValue": 250,
+        "description": "Multiplies trackpad scrolling in the app. 250 roughly offsets Omarchy's 0.4 touchpad scroll factor."
+      },
+      {
+        "key": "skyFx",
+        "type": "boolean",
+        "label": "Animated ASCII sky in the app"
+      }
+    ]
+  },
+  "keepLoaded": true
+}
