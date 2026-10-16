@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "io.github.aronbohl.isobar",
   "name": "Isobar",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "author": "Aron Bohl",
   "license": "MIT",
   "description": "Weather for Omarchy: a bar icon with severity-colored alerts, an extended popover, and a full keyboard-first Weather app.",
