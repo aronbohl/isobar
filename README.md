@@ -15,12 +15,57 @@ since several themes repurpose their red.
 ## Install
 
 ```sh
-git clone https://github.com/aronbohl/isobar ~/Projects/isobar
-ln -s ~/Projects/isobar ~/.config/omarchy/plugins/io.github.aronbohl.isobar
-omarchy-shell shell rescanPlugins
-omarchy plugin enable io.github.aronbohl.isobar --after omarchy.clock
-omarchy plugin disable omarchy.weather   # the stock widget, if it's in your bar
+omarchy plugin add https://github.com/aronbohl/isobar --enable
 ```
+
+`omarchy plugin add` clones and validates the plugin, then asks which bar
+section to put it in (center by default). If Omarchy's stock weather widget
+is also in your bar, turn it off:
+
+```sh
+omarchy plugin disable omarchy.weather
+```
+
+Isobar starts with the stock widget's location if you had set one;
+otherwise open the app and press `/` (or "+ add location") to add places.
+Update with `omarchy plugin update io.github.aronbohl.isobar`.
+
+## Remove
+
+```sh
+omarchy plugin remove io.github.aronbohl.isobar
+rm -rf ~/.cache/isobar                    # cached forecasts and sent-alert ids
+omarchy plugin enable omarchy.weather     # the stock widget, if you want it back
+```
+
+Your saved locations and settings live on Isobar's bar entry in
+`~/.config/omarchy/shell.json`, so removing or disabling the plugin deletes
+them. If you added the keybinding below, delete that line from
+`~/.config/hypr/bindings.lua` too.
+
+## Requirements and network access
+
+Built for Omarchy 4 (tested on 4.0.4). Everything else it uses ships with
+Omarchy: `curl`, a Nerd Font for the glyphs, `hyprctl`,
+`omarchy-notification-send` for alert notifications, and `xdg-open` for the
+`m` full radar map. No API keys or accounts.
+
+It sends requests only to these services. They carry your saved
+locations' coordinates (for radar, the map tiles around them; for place
+search, what you type) and nothing else:
+
+| Service | What for | When |
+| --- | --- | --- |
+| `api.open-meteo.com` | forecasts | every refresh (15 min by default) |
+| `air-quality-api.open-meteo.com` | air quality | every refresh |
+| `geocoding-api.open-meteo.com` | place search | while you search |
+| `api.weather.gov` | alerts | every refresh, US locations only |
+| `api.rainviewer.com` | the list of radar frames | every refresh |
+| `tilecache.rainviewer.com` | radar images | only once the radar has been on screen |
+
+It writes only to its own entry in `shell.json` (through Omarchy's settings
+API) and to `~/.cache/isobar/`. It reads the stock widget's
+`~/.local/state/omarchy/settings/weather.json` once, for a starting location.
 
 ## Bar icon
 
@@ -120,6 +165,17 @@ omarchy-shell shell call io.github.aronbohl.isobar next ''
 
 ## Development
 
+To work on it, symlink a clone instead of installing:
+
+```sh
+git clone https://github.com/aronbohl/isobar ~/Projects/isobar
+ln -s ~/Projects/isobar ~/.config/omarchy/plugins/io.github.aronbohl.isobar
+omarchy-shell shell rescanPlugins
+omarchy plugin enable io.github.aronbohl.isobar
+```
+
+Checks:
+
 ```sh
 omarchy plugin validate .
 node --test tests/*.test.js
@@ -134,4 +190,4 @@ service; run `omarchy restart shell` after changes. Logs:
 
 ## License
 
-MIT
+MIT, see [LICENSE](LICENSE).
