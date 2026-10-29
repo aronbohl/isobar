@@ -194,14 +194,22 @@ function firstSentence(text) {
 // Desktop notification for an alert at a saved location. Omarchy's notifier
 // keeps every critical notification until dismissed, so only an emergency is
 // critical; watches and warnings are normal and time out.
-function notification(alert, locationName, nowMs) {
-  var when = timing(alert, nowMs)
-  var advice = firstSentence(alert.instruction)
+// The text reaches the notifier as process arguments, which other local
+// users can read, so it names only the alert type: no place, times (their
+// zone gives the region away) or NWS wording (it names offices and counties).
+function notification(alert) {
   return {
-    title: alert.event.toUpperCase() + " · " + String(locationName || "").toUpperCase(),
-    body: [when ? when + "." : "", advice].filter(function(s) { return !!s }).join(" "),
+    title: alert.event.toUpperCase(),
+    body: "For one of your saved places. Open Isobar for details.",
     urgency: alert.level === "emergency" ? "critical" : "normal"
   }
+}
+
+// Text from an API, made safe to splice into a StyledText string.
+function escapeMarkup(text) {
+  return String(text === undefined || text === null ? "" : text)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;").replace(/'/g, "&#39;")
 }
 
 // Alerts that deserve a desktop notification and haven't had one. An update
@@ -224,7 +232,7 @@ function unnotified(alerts, notifiedIds) {
 if (typeof module !== "undefined") {
   module.exports = {
     LEVELS: LEVELS, rank: rank, level: level, vtecEvent: vtecEvent, wallClock: wallClock, zoneFromHeadline: zoneFromHeadline,
-    parse: parse, active: active, topLevel: topLevel, top: top, timing: timing, summaryLine: summaryLine, reflow: reflow, firstSentence: firstSentence,
+    parse: parse, active: active, topLevel: topLevel, top: top, timing: timing, summaryLine: summaryLine, reflow: reflow, escapeMarkup: escapeMarkup, firstSentence: firstSentence,
     notification: notification, unnotified: unnotified
   }
 }

@@ -3,6 +3,7 @@ import QtQuick
 // A tile's descriptive line.
 Text {
   required property var tokens
+  textFormat: Text.PlainText
 
   width: parent ? parent.width : implicitWidth
   wrapMode: Text.Wrap

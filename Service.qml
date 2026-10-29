@@ -180,7 +180,13 @@ Item {
 
   // --------------------------------------------------------------- views
 
-  function openPopover() {
+  // `alertId`, from a notification click, makes the popover show that alert.
+  // Every bar copy reads the request and none consumes it (another monitor's
+  // open copy must not take it from the one being opened); it lapses instead.
+  property var popoverRequest: ({ alert: "", at: 0 })
+
+  function openPopover(alertId) {
+    popoverRequest = { alert: alertId || "", at: Date.now() }
     popoverRequested()
   }
 
@@ -188,6 +194,14 @@ Item {
   function openApp(alertId) {
     if (shell && typeof shell.summon === "function")
       shell.summon(moduleName, JSON.stringify({ view: "app", alert: alertId || "" }))
+  }
+
+  function openFullMap(location, zoom) {
+    if (!location) return
+    // FileView skips the write (and `saved`) when the text is unchanged, so
+    // the stamp makes every press, even for the same map, write and open.
+    mapFile.setText(Radar.fullMapRedirect(Radar.fullMapUrl(location.latitude, location.longitude, zoom))
+      + "<!-- " + Date.now() + " -->\n")
   }
 
   // ------------------------------------------------------------ fetching
@@ -211,12 +225,10 @@ Item {
     var requested = locations.slice()
     forecastPending = true
     forecastLocations = requested
-    forecastProc.command = Api.curl(Api.forecastUrl(requested), 15)
-    forecastProc.running = true
+    fetch(forecastProc, Api.forecastUrl(requested), 15)
     airQualityPending = true
     airQualityLocations = requested
-    airQualityProc.command = Api.curl(Api.airQualityUrl(requested), 15)
-    airQualityProc.running = true
+    fetch(airQualityProc, Api.airQualityUrl(requested), 15)
     alertQueue = requested.filter(Api.nwsCovers)
     nextAlerts()
     refreshRadar(true)
@@ -226,8 +238,7 @@ Item {
   function refreshRadar(force) {
     if (radarProc.running) return
     if (!force && now - radarFetchedAt < 10 * 60000) return
-    radarProc.command = Api.curl(Radar.MAPS_URL, 10)
-    radarProc.running = true
+    fetch(radarProc, Radar.MAPS_URL, 10)
   }
 
   function nextAlerts() {
@@ -238,8 +249,14 @@ Item {
     }
     alertQueueLocation = alertQueue[0]
     alertQueue = alertQueue.slice(1)
-    alertsProc.command = Api.curl(Api.alertsUrl(alertQueueLocation), 10)
-    alertsProc.running = true
+    fetch(alertsProc, Api.alertsUrl(alertQueueLocation), 10)
+  }
+
+  function fetch(proc, url, timeoutSeconds) {
+    var request = Api.curl(url, timeoutSeconds)
+    proc.environment = request.environment
+    proc.command = request.command
+    proc.running = true
   }
 
   // One response entry per requested location, in request order.
@@ -306,16 +323,46 @@ Item {
 
   // --------------------------------------------------------- notifications
 
+  // Notification clicks name their alert by a random token, since the click
+  // command is visible to other users and must not carry the place. Tokens
+  // live only in memory; one from before a restart falls back to the popover.
+  property var notificationTargets: ({})
+
+  function notificationToken(location, alert) {
+    var token = ""
+    for (var i = 0; i < 4; i++) token += Math.floor(Math.random() * 0x10000).toString(16).padStart(4, "0")
+    var next = {}
+    var kept = Object.keys(notificationTargets).slice(-49)
+    for (var k = 0; k < kept.length; k++) next[kept[k]] = notificationTargets[kept[k]]
+    next[token] = { key: Model.locationKey(location), alert: alert.id }
+    notificationTargets = next
+    return token
+  }
+
+  // Selects the alert's place, then opens the popover on it.
+  function openNotification(token) {
+    var target = notificationTargets[String(token || "")]
+    if (target) {
+      for (var i = 0; i < locations.length; i++) {
+        if (Model.locationKey(locations[i]) === target.key) {
+          if (i !== selected) select(i)
+          break
+        }
+      }
+    }
+    openPopover(target ? target.alert : "")
+  }
+
   function notify(location, list) {
     var fresh = Alerts.unnotified(list, notifiedIds)
     for (var i = 0; i < fresh.length; i++) {
-      var n = Alerts.notification(fresh[i], location.name, Date.now())
+      var n = Alerts.notification(fresh[i])
       // Emergencies go out as notify-send so they also break through Do Not
       // Disturb; Omarchy's notifier only trusts that app name for critical.
       var argv = ["omarchy-notification-send",
         "--app-name", n.urgency === "critical" ? "notify-send" : "Isobar",
         "-g", "\uf071", "-u", n.urgency, n.title, n.body,
-        "--exec", "omarchy-shell", "shell", "call", moduleName, "popover", ""]
+        "--exec", "omarchy-shell", "shell", "call", moduleName, "alert", notificationToken(location, fresh[i])]
       Quickshell.execDetached(argv)
     }
 
@@ -352,8 +399,7 @@ Item {
     }
     searching = true
     geocodeProc.query = wantedQuery
-    geocodeProc.command = Api.curl(Api.geocodeUrl(wantedQuery), 6)
-    geocodeProc.running = true
+    fetch(geocodeProc, Api.geocodeUrl(wantedQuery), 6)
   }
 
   // --------------------------------------------------------------- cache
@@ -385,6 +431,15 @@ Item {
     printErrors: false
     atomicWrites: true
     onLoaded: root.loadCache(text())
+  }
+
+  // Written, then opened, by openFullMap.
+  FileView {
+    id: mapFile
+    path: root.cacheDir + "/radar-map.html"
+    printErrors: false
+    atomicWrites: true
+    onSaved: Quickshell.execDetached(["xdg-open", path])
   }
 
   FileView {
@@ -489,5 +544,9 @@ Item {
 
   // The first fetch is triggered by onLocationsChanged once the settings
   // (or the stock widget's seed location) arrive.
-  Component.onCompleted: Quickshell.execDetached(["mkdir", "-p", root.cacheDir])
+  // The cache holds forecasts keyed by the coordinates of every saved place,
+  // so it is private: 0700 for the folder, 0600 for files a 1.0.0 cache left.
+  Component.onCompleted: Quickshell.execDetached(["sh", "-c",
+    'umask 077 && mkdir -p "$1" && chmod 700 "$1" && find "$1" -maxdepth 1 -type f -exec chmod 600 {} +',
+    "sh", root.cacheDir])
 }

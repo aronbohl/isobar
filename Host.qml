@@ -3,7 +3,9 @@ import QtQuick
 // The plugin's panel entry, kept loaded so IPC always reaches it:
 //   omarchy-shell shell call io.github.aronbohl.isobar <method> ''
 // toggle  — open the app, or close it if it's open on this workspace
-// popover — open the bar popover (alert notifications click through here)
+// popover — open the bar popover
+// alert   — notification click-through: select the alert's place, then
+//           open the popover (payload is an opaque token)
 // refresh — refetch now
 // next    — cycle to the next saved location
 Item {
@@ -53,6 +55,10 @@ Item {
 
   function popover() {
     if (service) service.openPopover()
+  }
+
+  function alert(token) {
+    if (service) service.openNotification(token)
   }
 
   function refresh() {

@@ -11,6 +11,7 @@ Box {
 
   BigValue { tokens: root.tokens; value: root.view.past }
   Text {
+    textFormat: Text.PlainText
     text: "in last 24h"
     color: root.tokens.fg
     font.family: root.tokens.fontFamily

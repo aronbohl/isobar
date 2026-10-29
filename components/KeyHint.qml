@@ -14,6 +14,7 @@ Row {
   spacing: tokens.px(6)
 
   Text {
+    textFormat: Text.PlainText
     text: root.key
     color: root.tokens.accent
     font.family: root.tokens.fontFamily
@@ -21,6 +22,7 @@ Row {
   }
 
   Text {
+    textFormat: Text.PlainText
     text: root.label
     color: hover.hovered ? root.tokens.fg : root.tokens.muted
     font.family: root.tokens.fontFamily

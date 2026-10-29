@@ -95,7 +95,9 @@ Popover keys: `←/→` (`h/l`) location · `↑/↓` (`j/k`) alert · `↵` ope
 
 Watches, warnings and emergencies send one desktop notification per alert
 (updates to an alert stay quiet). Emergencies stay until dismissed and break
-through Do Not Disturb.
+through Do Not Disturb. The notification names only the alert type, not the
+place or its details, because its text is passed to the notifier as command
+arguments that other users on the machine can see; open Isobar for the rest.
 
 ## App
 
@@ -152,7 +154,7 @@ With no `locations`, the first one comes from the stock widget's
 locale), `metric` or `imperial`. `scrollSpeed` (percent, 50–800) multiplies
 touchpad scrolling in the app; 250 roughly offsets Omarchy's 0.4 touchpad
 `scroll_factor`. Responses are cached in
-`~/.cache/isobar/`.
+`~/.cache/isobar/`, which is readable only by you.
 
 ## IPC
 
@@ -165,11 +167,11 @@ omarchy-shell shell call io.github.aronbohl.isobar next ''
 
 ## Development
 
-To work on it, symlink a clone instead of installing:
+To work on it, symlink your local checkout instead of installing. From the
+checkout's folder:
 
 ```sh
-git clone https://github.com/aronbohl/isobar ~/Projects/isobar
-ln -s ~/Projects/isobar ~/.config/omarchy/plugins/io.github.aronbohl.isobar
+ln -s "$PWD" ~/.config/omarchy/plugins/io.github.aronbohl.isobar
 omarchy-shell shell rescanPlugins
 omarchy plugin enable io.github.aronbohl.isobar
 ```

@@ -32,6 +32,7 @@ Rectangle {
 
     Text {
       id: icon
+      textFormat: Text.PlainText
       text: ""
       color: root.tone
       font.family: root.tokens.fontFamily
@@ -46,8 +47,8 @@ Rectangle {
         width: parent.width
         textFormat: Text.StyledText
         wrapMode: Text.Wrap
-        text: "<b>" + root.alert.event + "</b> <font color='" + root.tokens.fg + "'>· "
-          + Alerts.summaryLine(root.alert, root.now) + "</font>"
+        text: "<b>" + Alerts.escapeMarkup(root.alert.event) + "</b> <font color='" + root.tokens.fg + "'>· "
+          + Alerts.escapeMarkup(Alerts.summaryLine(root.alert, root.now)) + "</font>"
           + " <font color='" + root.tokens.muted + "'>" + (root.expanded ? "▴" : "▾") + "</font>"
         color: root.tone
         font.family: root.tokens.fontFamily

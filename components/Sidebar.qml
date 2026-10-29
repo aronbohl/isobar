@@ -115,6 +115,7 @@ Item {
     spacing: root.tokens.px(10)
 
     Text {
+      textFormat: Text.PlainText
       text: root.online ? "add a location" : "search locations"
       color: root.tokens.muted
       font.family: root.tokens.fontFamily
@@ -130,6 +131,7 @@ Item {
 
       Text {
         id: slash
+        textFormat: Text.PlainText
         x: root.tokens.px(12)
         anchors.verticalCenter: parent.verticalCenter
         text: "/"
@@ -174,6 +176,7 @@ Item {
         }
 
         Text {
+          textFormat: Text.PlainText
           visible: field.text === ""
           anchors.verticalCenter: parent.verticalCenter
           text: root.online ? "city, zip or airport" : "filter saved locations"
@@ -258,6 +261,7 @@ Item {
             spacing: root.tokens.px(2)
 
             Text {
+              textFormat: Text.PlainText
               width: parent.width
               text: "+ " + result.modelData.name
               color: root.tokens.fg
@@ -267,6 +271,7 @@ Item {
               elide: Text.ElideRight
             }
             Text {
+              textFormat: Text.PlainText
               width: parent.width
               text: result.modelData.region
               color: root.tokens.muted
@@ -279,6 +284,7 @@ Item {
       }
 
       Text {
+        textFormat: Text.PlainText
         width: listColumn.width
         topPadding: root.tokens.px(4)
         wrapMode: Text.Wrap
@@ -332,6 +338,7 @@ Item {
     }
 
     Text {
+      textFormat: Text.PlainText
       x: root.tokens.px(12)
       anchors.verticalCenter: parent.verticalCenter
       text: "+ add location"

@@ -23,6 +23,7 @@ Rectangle {
 
   Text {
     id: label
+    textFormat: Text.PlainText
     anchors.centerIn: parent
     text: root.text
     color: root.selected ? root.tokens.bg : (hover.hovered ? root.tokens.fg : root.tokens.muted)

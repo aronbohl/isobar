@@ -84,3 +84,10 @@ test("the base map wraps across the antimeridian like the tiles", () => {
   const east = v.places.filter((p) => p.x > 300).map((p) => p.name)
   assert.ok(east.includes("Apia") && east.includes("Nuku'alofa"), JSON.stringify(east))
 })
+
+test("full-map redirect page carries the escaped URL", () => {
+  const url = Radar.fullMapUrl(41.2563, -95.9404, 7)
+  const page = Radar.fullMapRedirect(url + "&x=<b>")
+  assert.ok(page.includes('content="0;url=' + url + '&amp;x=&lt;b>"'))
+  assert.ok(!page.includes("<b>"))
+})

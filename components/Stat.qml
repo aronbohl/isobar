@@ -16,6 +16,7 @@ Column {
   spacing: tokens.px(7)
 
   Text {
+    textFormat: Text.PlainText
     text: root.label
     color: root.tokens.muted
     font.family: root.fontFamily
@@ -34,6 +35,7 @@ Column {
 
     Text {
       id: valueText
+      textFormat: Text.PlainText
       text: root.value
       color: root.tokens.fg
       font.family: root.fontFamily
@@ -41,6 +43,7 @@ Column {
     }
 
     Text {
+      textFormat: Text.PlainText
       visible: root.secondary !== ""
       anchors.baseline: valueText.baseline
       text: root.secondary
@@ -51,6 +54,7 @@ Column {
   }
 
   Text {
+    textFormat: Text.PlainText
     visible: root.note !== ""
     text: root.note
     color: root.tokens.muted

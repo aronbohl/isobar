@@ -57,6 +57,7 @@ Box {
         y: gauge.width / 2 - height / 2
 
         Text {
+          textFormat: Text.PlainText
           anchors.horizontalCenter: parent.horizontalCenter
           text: root.view.value
           color: root.tokens.fg
@@ -64,6 +65,7 @@ Box {
           font.pixelSize: root.tokens.px(18)
         }
         Text {
+          textFormat: Text.PlainText
           anchors.horizontalCenter: parent.horizontalCenter
           text: root.view.unit
           color: root.tokens.muted

@@ -94,6 +94,7 @@ Item {
           spacing: root.tokens.px(6)
 
           Text {
+            textFormat: Text.PlainText
             text: group.modelData.title
             color: root.tokens.accent
             font.family: root.tokens.fontFamily
@@ -111,6 +112,7 @@ Item {
               spacing: root.tokens.px(10)
 
               Text {
+                textFormat: Text.PlainText
                 width: root.tokens.px(96)
                 text: line.modelData[0]
                 color: root.tokens.fg
@@ -118,6 +120,7 @@ Item {
                 font.pixelSize: root.tokens.px(12)
               }
               Text {
+                textFormat: Text.PlainText
                 width: group.width - root.tokens.px(106)
                 text: line.modelData[1]
                 color: root.tokens.muted

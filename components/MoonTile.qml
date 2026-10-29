@@ -61,12 +61,14 @@ Box {
       spacing: root.tokens.px(2)
 
       Text {
+        textFormat: Text.PlainText
         text: root.view.name
         color: root.tokens.fg
         font.family: root.tokens.fontFamily
         font.pixelSize: root.tokens.px(14)
       }
       Text {
+        textFormat: Text.PlainText
         text: root.view.illuminated
         color: root.tokens.muted
         font.family: root.tokens.fontFamily

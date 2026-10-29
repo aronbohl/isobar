@@ -43,9 +43,23 @@ Panel {
     if (alerts.length > 1) alertIndex = (alertIndex + step + alerts.length) % alerts.length
   }
 
+  // A notification's alert, matched by id or by an update that replaced it.
+  // Requests older than a few seconds are spent, so later opens start at 0.
+  function showRequestedAlert() {
+    var request = service ? service.popoverRequest : null
+    alertIndex = 0
+    if (!request || !request.alert || Date.now() - request.at > 5000) return
+    for (var i = 0; i < alerts.length; i++) {
+      if (alerts[i].id === request.alert || (alerts[i].references || []).indexOf(request.alert) !== -1) {
+        alertIndex = i
+        break
+      }
+    }
+  }
+
   onOpenedChanged: {
     if (!opened || !service) return
-    alertIndex = 0
+    showRequestedAlert()
     // Opening is a good moment to catch up if the data is getting old.
     if (service.now - service.fetchedAt > 5 * 60000) service.refresh()
   }
@@ -53,6 +67,8 @@ Panel {
   Connections {
     target: root.service
     function onLocationKeyChanged() { root.alertIndex = 0 }
+    // Already open when a notification is clicked.
+    function onPopoverRequestChanged() { if (root.opened) root.showRequestedAlert() }
   }
 
   KeyboardPanel {
@@ -91,6 +107,7 @@ Panel {
 
         // ------------------------------------------------ empty / loading
         Text {
+          textFormat: Text.PlainText
           visible: !root.view
           width: parent.width
           topPadding: root.tokens ? root.tokens.px(8) : 0
@@ -117,6 +134,7 @@ Panel {
             spacing: root.tokens ? root.tokens.px(16) : 0
 
             Text {
+              textFormat: Text.PlainText
               anchors.verticalCenter: parent.verticalCenter
               text: root.view ? root.view.glyph : ""
               color: root.tokens ? root.tokens.fg : "transparent"
@@ -130,6 +148,7 @@ Panel {
 
               Text {
                 id: bigTemp
+                textFormat: Text.PlainText
                 text: root.view ? root.view.temp : ""
                 color: root.tokens ? root.tokens.fg : "transparent"
                 font.family: root.fontFamily
@@ -137,6 +156,7 @@ Panel {
                 font.weight: Font.Medium
               }
               Text {
+                textFormat: Text.PlainText
                 anchors.top: bigTemp.top
                 anchors.topMargin: root.tokens ? root.tokens.px(8) : 0
                 leftPadding: root.tokens ? root.tokens.px(4) : 0
@@ -164,6 +184,7 @@ Panel {
                 spacing: root.tokens ? root.tokens.px(8) : 0
 
                 Text {
+                  textFormat: Text.PlainText
                   anchors.verticalCenter: parent.verticalCenter
                   text: "\uf041"
                   color: root.tokens ? root.tokens.muted : "transparent"
@@ -171,6 +192,7 @@ Panel {
                   font.pixelSize: Style.font.bodySmall
                 }
                 Text {
+                  textFormat: Text.PlainText
                   text: root.service && root.service.location ? root.service.location.name.toUpperCase() : ""
                   color: root.tokens ? root.tokens.muted : "transparent"
                   font.family: root.fontFamily
@@ -181,6 +203,7 @@ Panel {
               }
 
               Text {
+                textFormat: Text.PlainText
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 visible: root.service !== null && root.service.locations.length > 1
@@ -264,6 +287,7 @@ Panel {
               width: parent.width - alertNav.width - (root.tokens ? root.tokens.px(12) : 0)
 
               Text {
+                textFormat: Text.PlainText
                 anchors.verticalCenter: parent.verticalCenter
                 text: "\uf071"
                 color: root.alert && root.tokens ? root.tokens.alert(root.alert.level) : "transparent"
@@ -271,6 +295,7 @@ Panel {
                 font.pixelSize: root.tokens ? root.tokens.px(13) : 13
               }
               Text {
+                textFormat: Text.PlainText
                 width: parent.width - x
                 text: root.alert ? root.alert.event.toUpperCase() : ""
                 color: root.alert && root.tokens ? root.tokens.alert(root.alert.level) : "transparent"
@@ -287,6 +312,7 @@ Panel {
               anchors.verticalCenter: parent.verticalCenter
 
               Text {
+                textFormat: Text.PlainText
                 text: (root.alertIndex + 1) + " OF " + root.alerts.length + " · "
                 color: root.tokens ? root.tokens.muted : "transparent"
                 font.family: root.fontFamily
@@ -296,6 +322,7 @@ Panel {
                 HoverHandler { cursorShape: root.alerts.length > 1 ? Qt.PointingHandCursor : Qt.ArrowCursor }
               }
               Text {
+                textFormat: Text.PlainText
                 text: "DETAILS ›"
                 color: detailsHover.hovered && root.tokens ? root.tokens.fg : (root.tokens ? root.tokens.muted : "transparent")
                 font.family: root.fontFamily
@@ -308,6 +335,7 @@ Panel {
           }
 
           Text {
+            textFormat: Text.PlainText
             width: parent.width
             text: root.alert && root.service ? Alerts.summaryLine(root.alert, root.service.now) : ""
             color: root.tokens ? root.tokens.muted : "transparent"
@@ -326,6 +354,7 @@ Panel {
           spacing: root.tokens ? root.tokens.px(10) : 0
 
           Text {
+            textFormat: Text.PlainText
             text: "NEXT 24 HOURS" + (hourly.step > 1 ? " · EVERY " + hourly.step + "H" : "")
             color: root.tokens ? root.tokens.muted : "transparent"
             font.family: root.fontFamily
@@ -359,6 +388,7 @@ Panel {
               spacing: root.tokens ? root.tokens.px(10) : 0
 
               Text {
+                textFormat: Text.PlainText
                 anchors.verticalCenter: parent.verticalCenter
                 text: modelData.glyph
                 color: root.tokens.fg
@@ -370,6 +400,7 @@ Panel {
                 spacing: root.tokens.px(4)
 
                 Text {
+                  textFormat: Text.PlainText
                   text: modelData.label
                   color: root.tokens.muted
                   font.family: root.fontFamily
@@ -379,12 +410,14 @@ Panel {
                 Row {
                   spacing: root.tokens.px(6)
                   Text {
+                    textFormat: Text.PlainText
                     text: modelData.hi
                     color: root.tokens.fg
                     font.family: root.fontFamily
                     font.pixelSize: root.tokens.px(13)
                   }
                   Text {
+                    textFormat: Text.PlainText
                     text: modelData.lo
                     color: root.tokens.muted
                     font.family: root.fontFamily
@@ -417,6 +450,7 @@ Panel {
           // Only when the data is suspect: offline, or older than two
           // refresh intervals.
           Text {
+            textFormat: Text.PlainText
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
             visible: root.service !== null && root.view !== null && (root.service.offline

@@ -51,7 +51,15 @@ test("NWS coverage", () => {
 
 test("only NWS requests carry the User-Agent", () => {
   const nws = Api.curl("https://api.weather.gov/alerts/active?point=1,2")
-  assert.ok(nws.includes(Api.USER_AGENT))
-  assert.equal(nws[nws.length - 1], "https://api.weather.gov/alerts/active?point=1,2")
-  assert.ok(!Api.curl("https://api.open-meteo.com/v1/forecast").includes("-A"))
+  assert.ok(nws.command.includes(Api.USER_AGENT))
+  assert.ok(!Api.curl("https://api.open-meteo.com/v1/forecast").command.includes("-A"))
+})
+
+test("request URLs stay out of process arguments", () => {
+  const url = Api.geocodeUrl("Omaha \"NE\"")
+  const request = Api.curl(url, 6)
+  assert.ok(!request.command.some(arg => arg.includes("Omaha") || arg.includes("open-meteo")))
+  assert.ok(request.command.includes("6"))
+  assert.equal(request.environment.ISOBAR_CURL_CONFIG,
+    'url = "' + url.replace(/\\/g, "\\\\").replace(/"/g, '\\"') + '"')
 })

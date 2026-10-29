@@ -14,6 +14,7 @@ Row {
 
   Text {
     id: big
+    textFormat: Text.PlainText
     text: root.value
     color: root.tokens.fg
     font.family: root.tokens.fontFamily
@@ -21,6 +22,7 @@ Row {
     font.weight: Font.ExtraLight
   }
   Text {
+    textFormat: Text.PlainText
     visible: root.label !== ""
     anchors.baseline: big.baseline
     text: root.label
@@ -29,6 +31,7 @@ Row {
     font.pixelSize: root.tokens.px(14)
   }
   Text {
+    textFormat: Text.PlainText
     visible: root.note !== ""
     anchors.baseline: big.baseline
     text: root.note

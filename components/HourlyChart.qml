@@ -32,6 +32,7 @@ Column {
         spacing: root.tokens.px(8)
 
         Text {
+          textFormat: Text.PlainText
           anchors.horizontalCenter: parent.horizontalCenter
           text: modelData.label
           color: index === 0 ? root.tokens.fg : root.tokens.muted
@@ -40,6 +41,7 @@ Column {
           font.bold: index === 0
         }
         Text {
+          textFormat: Text.PlainText
           anchors.horizontalCenter: parent.horizontalCenter
           text: modelData.glyph
           color: root.tokens.fg
@@ -47,6 +49,7 @@ Column {
           font.pixelSize: root.tokens.px(20)
         }
         Text {
+          textFormat: Text.PlainText
           anchors.horizontalCenter: parent.horizontalCenter
           // Keeps its line even when empty, so the chart lines up.
           text: modelData.pop || " "
@@ -111,6 +114,7 @@ Column {
 
       Text {
         required property var modelData
+        textFormat: Text.PlainText
         width: root.columnWidth
         horizontalAlignment: Text.AlignHCenter
         text: modelData.temp

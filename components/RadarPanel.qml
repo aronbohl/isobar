@@ -200,6 +200,7 @@ Box {
           color: root.tokens.muted
         }
         Text {
+          textFormat: Text.PlainText
           anchors.verticalCenter: parent.verticalCenter
           text: modelData.name
           color: root.tokens.muted
@@ -261,6 +262,7 @@ Box {
 
         Text {
           id: placeName
+          textFormat: Text.PlainText
           anchors.centerIn: parent
           text: root.location ? root.location.name : ""
           color: root.tokens.fg
@@ -271,6 +273,7 @@ Box {
     }
 
     Text {
+      textFormat: Text.PlainText
       visible: !root.radar
       anchors.centerIn: parent
       text: "loading radar…"
@@ -281,6 +284,7 @@ Box {
 
     // Data sources (RainViewer asks for attribution).
     Text {
+      textFormat: Text.PlainText
       x: root.tokens.px(8)
       anchors.bottom: parent.bottom
       anchors.bottomMargin: root.tokens.px(6)
@@ -301,6 +305,7 @@ Box {
       spacing: root.tokens.px(6)
 
       Text {
+        textFormat: Text.PlainText
         anchors.verticalCenter: parent.verticalCenter
         text: "light"
         color: root.tokens.muted
@@ -322,6 +327,7 @@ Box {
         }
       }
       Text {
+        textFormat: Text.PlainText
         anchors.verticalCenter: parent.verticalCenter
         text: "heavy"
         color: root.tokens.muted
@@ -354,6 +360,7 @@ Box {
       }
 
       Text {
+        textFormat: Text.PlainText
         anchors.verticalCenter: parent.verticalCenter
         text: root.frames.length ? Radar.frameLabel(root.frames[0], root.frames[root.frames.length - 1]) : ""
         color: root.tokens.muted
@@ -386,6 +393,7 @@ Box {
       }
 
       Text {
+        textFormat: Text.PlainText
         anchors.verticalCenter: parent.verticalCenter
         text: root.frames.length ? Radar.frameLabel(root.frames[root.current], root.frames[root.frames.length - 1])
           + (root.paused ? " · paused" : "") : ""

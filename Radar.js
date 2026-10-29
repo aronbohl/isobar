@@ -158,10 +158,19 @@ function fullMapUrl(lat, lon, z) {
   return "https://www.rainviewer.com/map.html?loc=" + Number(lat).toFixed(4) + "," + Number(lon).toFixed(4) + "," + clampZoom(z)
 }
 
+// A local page that forwards to the full map. Opening it instead of the URL
+// keeps the coordinates out of the browser's process arguments.
+function fullMapRedirect(url) {
+  var safe = String(url).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;")
+  return '<!doctype html><meta charset="utf-8"><meta name="referrer" content="no-referrer">'
+    + '<meta http-equiv="refresh" content="0;url=' + safe + '"><title>Radar</title>'
+    + '<a href="' + safe + '">Open the radar map</a>\n'
+}
+
 if (typeof module !== "undefined") {
   module.exports = {
     TILE: TILE, MIN_ZOOM: MIN_ZOOM, MAX_ZOOM: MAX_ZOOM, MAPS_URL: MAPS_URL, LEGEND: LEGEND,
     clampZoom: clampZoom, project: project, tiles: tiles, parseFrames: parseFrames,
-    radarUrl: radarUrl, frameLabel: frameLabel, basemapView: basemapView, fullMapUrl: fullMapUrl
+    radarUrl: radarUrl, frameLabel: frameLabel, basemapView: basemapView, fullMapUrl: fullMapUrl, fullMapRedirect: fullMapRedirect
   }
 }

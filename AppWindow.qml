@@ -166,8 +166,7 @@ Item {
   }
 
   function openMap() {
-    var loc = service.location
-    if (loc) Quickshell.execDetached(["xdg-open", Radar.fullMapUrl(loc.latitude, loc.longitude, radarPanel.zoom)])
+    service.openFullMap(service.location, radarPanel.zoom)
   }
 
   function scrollBy(dy) {
@@ -263,6 +262,7 @@ Item {
             spacing: root.tokens.px(10)
 
             Text {
+              textFormat: Text.PlainText
               anchors.verticalCenter: parent.verticalCenter
               text: "isobar"
               color: root.tokens.accent
@@ -271,6 +271,7 @@ Item {
               font.bold: true
             }
             Text {
+              textFormat: Text.PlainText
               anchors.verticalCenter: parent.verticalCenter
               text: "~/" + (root.service.location ? Model.slug(root.service.location.name) : "")
               color: root.tokens.fg
@@ -296,6 +297,7 @@ Item {
             spacing: root.tokens.px(12)
 
             Text {
+              textFormat: Text.PlainText
               anchors.verticalCenter: parent.verticalCenter
               text: (root.service.offline ? "offline · " : "") + root.service.updatedLabel
               color: root.service.offline ? root.tokens.alert("warning") : root.tokens.muted
@@ -476,6 +478,7 @@ Item {
             spacing: root.tokens.px(32)
 
             Text {
+              textFormat: Text.PlainText
               visible: root.hero === null
               width: parent.width
               wrapMode: Text.Wrap

@@ -115,17 +115,30 @@ test("notifications go out once per alert, including across updates", () => {
 
 test("notification copy and urgency", () => {
   const [alert] = Alerts.parse(fixture("nws-omaha.json"), OMAHA_NOW)
-  assert.deepEqual(Alerts.notification(alert, "Omaha", OMAHA_NOW), {
-    title: "FREEZE WARNING · OMAHA",
-    body: "Sat 1:00 AM – 9:00 AM CDT. Take steps now to protect tender plants from the cold.",
+  assert.deepEqual(Alerts.notification(alert), {
+    title: "FREEZE WARNING",
+    body: "For one of your saved places. Open Isobar for details.",
     urgency: "normal"
   })
   const [emergency] = Alerts.parse({ features: [feature({ event: "Tornado Emergency", instruction: "TAKE COVER NOW!  Move to a basement." })] }, NOW)
-  const n = Alerts.notification(emergency, "Omaha", NOW)
-  assert.equal(n.urgency, "critical")
-  assert.equal(n.body, "Until Fri 10:00 AM. TAKE COVER NOW!")
+  assert.equal(Alerts.notification(emergency).urgency, "critical")
   const [watch] = Alerts.parse({ features: [feature({ event: "Freeze Watch" })] }, NOW)
-  assert.equal(Alerts.notification(watch, "Omaha", NOW).urgency, "normal")
+  assert.equal(Alerts.notification(watch).urgency, "normal")
+})
+
+test("notification text never names the place, time or NWS office", () => {
+  const [alert] = Alerts.parse(fixture("nws-omaha.json"), OMAHA_NOW)
+  const n = Alerts.notification(alert)
+  const text = n.title + " " + n.body
+  for (const leak of ["OMAHA", "Omaha", "CDT", "NWS", "Sat", alert.area])
+    assert.ok(!text.includes(leak), leak)
+})
+
+test("escapeMarkup neutralizes StyledText tags", () => {
+  assert.equal(Alerts.escapeMarkup(`<img src="http://x/a.png"> & 'b'`),
+    "&lt;img src=&quot;http://x/a.png&quot;&gt; &amp; &#39;b&#39;")
+  assert.equal(Alerts.escapeMarkup(null), "")
+  assert.equal(Alerts.escapeMarkup("Freeze Warning"), "Freeze Warning")
 })
 
 test("cached alerts expire on their end time", () => {

@@ -70,6 +70,7 @@ Box {
 
         Text {
           required property var modelData
+          textFormat: Text.PlainText
           readonly property real angle: modelData[1] * Math.PI / 180
           readonly property real radius: dial.width / 2 - root.tokens.px(6)
           x: dial.width / 2 + radius * Math.sin(angle) - width / 2
@@ -85,6 +86,7 @@ Box {
         anchors.centerIn: parent
 
         Text {
+          textFormat: Text.PlainText
           anchors.horizontalCenter: parent.horizontalCenter
           text: root.view.speed
           color: root.tokens.fg
@@ -92,6 +94,7 @@ Box {
           font.pixelSize: root.tokens.px(18)
         }
         Text {
+          textFormat: Text.PlainText
           anchors.horizontalCenter: parent.horizontalCenter
           text: root.view.unit
           color: root.tokens.muted

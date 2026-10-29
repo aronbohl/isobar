@@ -40,6 +40,7 @@ Rectangle {
         spacing: root.tokens.px(2)
 
         Text {
+          textFormat: Text.PlainText
           width: parent.width
           text: root.view.name
           color: root.tokens.fg
@@ -49,6 +50,7 @@ Rectangle {
           elide: Text.ElideRight
         }
         Text {
+          textFormat: Text.PlainText
           text: root.view.time
           color: root.tokens.muted
           font.family: root.tokens.fontFamily
@@ -63,6 +65,7 @@ Rectangle {
         spacing: root.tokens.px(8)
 
         Text {
+          textFormat: Text.PlainText
           anchors.verticalCenter: parent.verticalCenter
           text: root.view.glyph
           color: root.tokens.fg
@@ -70,6 +73,7 @@ Rectangle {
           font.pixelSize: root.tokens.px(20)
         }
         Text {
+          textFormat: Text.PlainText
           anchors.verticalCenter: parent.verticalCenter
           text: root.view.temp
           color: root.tokens.fg
@@ -86,6 +90,7 @@ Rectangle {
 
       Text {
         id: condition
+        textFormat: Text.PlainText
         width: parent.width - range.width - root.tokens.px(8)
         text: root.view.condition
         color: root.tokens.fg
@@ -101,6 +106,7 @@ Rectangle {
         spacing: root.tokens.px(8)
 
         Text {
+          textFormat: Text.PlainText
           text: "H " + root.view.hi + "  L " + root.view.lo
           color: root.tokens.muted
           font.family: root.tokens.fontFamily
@@ -109,6 +115,7 @@ Rectangle {
 
         // Remove, shown on hover (x / Delete from the keyboard).
         Text {
+          textFormat: Text.PlainText
           visible: hover.hovered
           text: "×"
           color: removeHover.hovered ? root.tokens.alert("warning") : root.tokens.muted
@@ -121,6 +128,7 @@ Rectangle {
     }
 
     Text {
+      textFormat: Text.PlainText
       visible: root.alert !== null
       width: parent.width
       text: root.alert ? "! " + root.alert.event : ""

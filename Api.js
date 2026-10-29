@@ -73,13 +73,18 @@ function nwsCovers(location) {
     || inBox(lat, lon, 17.8, 18.6, -67.3, -65.2)       // Puerto Rico
 }
 
-// curl argv for a GET. NWS rejects requests without a User-Agent.
+// A GET as { command, environment } for a Process. The URL holds saved
+// coordinates or a search query, and other local users can read process
+// arguments, so it reaches curl as a config file on stdin, fed from an
+// environment variable (owner-only in /proc) by the shell's printf builtin.
+// NWS rejects requests without a User-Agent.
 function curl(url, timeoutSeconds) {
-  var argv = ["curl", "-fsS", "--compressed", "--max-time", String(timeoutSeconds || 10)]
+  var argv = ["sh", "-c", 'printf "%s\\n" "$ISOBAR_CURL_CONFIG" | curl -K - "$@"', "sh",
+    "-fsS", "--compressed", "--max-time", String(timeoutSeconds || 10)]
   if (url.indexOf("api.weather.gov") !== -1)
     argv.push("-A", USER_AGENT, "-H", "Accept: application/geo+json")
-  argv.push(url)
-  return argv
+  var quoted = String(url).replace(/\\/g, "\\\\").replace(/"/g, '\\"')
+  return { command: argv, environment: { ISOBAR_CURL_CONFIG: 'url = "' + quoted + '"' } }
 }
 
 if (typeof module !== "undefined") {

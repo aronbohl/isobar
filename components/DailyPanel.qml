@@ -32,6 +32,7 @@ Box {
 
       Text {
         id: day
+        textFormat: Text.PlainText
         width: row.labelW
         anchors.verticalCenter: parent.verticalCenter
         text: row.modelData.label
@@ -42,6 +43,7 @@ Box {
       }
       Text {
         id: sky
+        textFormat: Text.PlainText
         x: row.labelW + row.gap
         width: row.glyphW
         anchors.verticalCenter: parent.verticalCenter
@@ -51,6 +53,7 @@ Box {
         font.pixelSize: root.tokens.px(18)
       }
       Text {
+        textFormat: Text.PlainText
         x: sky.x + row.glyphW + row.gap
         width: row.popW
         anchors.verticalCenter: parent.verticalCenter
@@ -61,6 +64,7 @@ Box {
       }
       Text {
         id: low
+        textFormat: Text.PlainText
         x: sky.x + row.glyphW + row.popW + row.gap * 2
         width: row.tempW
         anchors.verticalCenter: parent.verticalCenter
@@ -105,6 +109,7 @@ Box {
       }
 
       Text {
+        textFormat: Text.PlainText
         anchors.right: parent.right
         width: row.tempW
         anchors.verticalCenter: parent.verticalCenter

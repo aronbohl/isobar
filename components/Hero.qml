@@ -18,6 +18,7 @@ Flow {
     spacing: root.tokens.px(6)
 
     Text {
+      textFormat: Text.PlainText
       text: root.view.region ? root.view.region + " · " + root.view.time + " local" : root.view.time + " local"
       color: root.tokens.muted
       font.family: root.tokens.fontFamily
@@ -25,6 +26,7 @@ Flow {
     }
 
     Text {
+      textFormat: Text.PlainText
       text: root.view.name
       color: root.tokens.fg
       font.family: root.tokens.fontFamily
@@ -36,6 +38,7 @@ Flow {
       spacing: root.tokens.px(20)
 
       Text {
+        textFormat: Text.PlainText
         anchors.verticalCenter: parent.verticalCenter
         text: root.view.temp
         color: root.tokens.fg
@@ -44,6 +47,7 @@ Flow {
         font.weight: Font.ExtraLight
       }
       Text {
+        textFormat: Text.PlainText
         anchors.verticalCenter: parent.verticalCenter
         text: root.view.glyph
         color: root.tokens.fg
